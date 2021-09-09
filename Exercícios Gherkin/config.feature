@@ -8,21 +8,16 @@
 
             Contexto: Dado que eu acesse a página de produtos do portal EBAC
 
-            Cenário: Seleção de cor, tamanho e quantidade
-            Quando eu selecionar um produto
-            E escolher a cor preta
-            E escolher o tamanho M
-            E escolher 2 produtos
+            Cenário: Seleção de cor, tamanho e quantidade devem ser obrigatórios
+            Quando eu escolher uma cor, tamanho e quantidade "Azul, M e 2"
             Então deve ser possível inserir no carrinho
 
             Cenário: Apenas 10 produtos por venda - válido
-            Quando eu selecionar um produto
-            E escolher 10 produtos
+            Quando eu escolher uma quantidade "10"
             Então deve ser possível inserir no carrinho
 
             Cenário: Apenas 10 produtos por venda - inválido
-            Quando eu selecionar um produto
-            E escolher 11 produtos
+            Quando eu escolher uma quantidade "12"
             Então não deve ser possível inserir no carrinho
 
             Cenário: Quando clicar no botão "limpar" deve voltar ao estado original

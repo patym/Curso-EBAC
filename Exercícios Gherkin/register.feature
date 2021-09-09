@@ -8,31 +8,19 @@
             Contexto: Dado que eu acesse a página de cadastro
 
             Cenário: Deve ser cadastrado com todos os dados obrigatórios, marcado com asteriscos - válido
-            Quando eu digitar o nome "joao"
-            E o sobrenome "paulo"
-            E o email "joaopaulo@gmail.com"
-            E dados do cartão "411111111"
+            Quando eu cadastrar todos os dados obrigatórios
             Então devo ser redirecionado para a tela de finalizar compra
 
             Cenário: Deve ser cadastrado com todos os dados obrigatórios, marcado com asteriscos - inválido
-            Quando eu digitar o nome "pedro"
-            E o sobrenome "correia"
-            E o e-mail "pedro@gmail.com"
-            E dados do cartão ""
+            Quando eu não cadastrar todos os dados obrigatórios
             Então deve mostrar uma mensagem de alerta "Alguns campos obrigatórios não foram preenchidos"
 
             Cenário: Não deve permitir campo e-mail com formato inválido. Sistema deve inserir uma mensagem de erro
-            Quando eu digitar o nome "julio"
-            E o sobrenome "oliveira"
-            E o email "juliogmail@com"
-            E dados do cartão "422222222"
+            Quando eu digitar um e-mail com formato inválido
             Então deve mostrar uma mensagem de erro "Campo de e-mail não foi preenchido corretamente."
 
             Cenário: Ao tentar cadastrar com campos vazios, deve exibir mensagem de alerta.
-            Quando eu digitar o nome ""
-            E o sobrenome "césar"
-            E o email ""
-            E dados do cartão ""
+            Quando eu cadastrar com campos vazios
             Então deve mostrar uma mensagem de alerta "Deve preencher os campos vazios."
 
             Esquema do Cenário: Realizar múltiplos cadastros
@@ -48,4 +36,14 @@
             | "maria"   | "teste@123" | maria@gmail.com | "4222222222222" | "Cadastro concluído com sucesso!"                  |
             | "yututyu" | "teste@123" | ""              | ""              | "Alguns campos obrigatórios não foram preenchidos" |
             | "jose"    | "teste@123" | josegmail@com   | "4333333333333" | "Campo de e-mail não foi preenchido corretamente." |
-            | "pedro"   | ""          | ""              | ""              | "Deve preencher os campos vazios."                 |
+            | "pedro"   | ""          | ""              | ""              | "Deve preencher os campos vazios."                 |    
+
+            Esquema do Cenário: Alerta de campos vazios
+            Quando eu cadastrar com <campo vazio> obrigatório
+            Então deve exibir uma <mensagem> de alerta
+
+            Exemplos:
+            | campo vazio    | mensagem                          |
+            | "usuário"      | "Preencher campo de Usuário"      |
+            | "senha"        | "Preencher campo de Senha"        |
+            | "e-mail"       | "Preencher campo de E-mail"       |
